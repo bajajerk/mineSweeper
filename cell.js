@@ -6,7 +6,7 @@ function Cell(i,j,w)
 	this.x=i*w;
 	this.y=j*w;
 	this.w=w;
-	this.revealed = true;
+	this.revealed = false;
 	this.neighbourCount;
 	// if (random(1) > 0.5)
 	// {
@@ -56,9 +56,47 @@ Cell.prototype.contains = function(x,y) {
 
 }
 
+
+
+
+
 Cell.prototype.reveal = function() {
 this.revealed = true;
+if (this.neighbourCount==0)
+{
+	//flood fill
+	this.floodFill();
+
 }
+}
+
+Cell.prototype.floodFill = function()
+{ 
+	for (xOff=-1; xOff<=1 ; xOff++)
+{
+	for (yOff=-1; yOff<=1 ; yOff++)
+	{
+		var i = this.i+xOff;
+		var j = this.j+yOff;
+		if(i>-1 && i<cols && j>-1 && j<rows)
+		{
+			var neighbour= grid[i][j];
+			if (!neighbour.bee && !neighbour.revealed)
+			{
+				neighbour.revealed=true;
+			}
+}
+}
+}
+}
+
+
+
+
+
+
+
+
 
 Cell.prototype.countBombs=function()
 {
