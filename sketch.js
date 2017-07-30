@@ -24,7 +24,7 @@ function setup()
 {
   var cnv = createCanvas(401, 401);
   var x = windowWidth/3;
-  var y = windowHeight  / 5;
+  var y = windowHeight  / 6;
   cnv.position(x, y);
 
 cols = floor(width / w);
