@@ -17,6 +17,7 @@ var grid;
 var cols
 var rows
 var w = 20;
+var totalBees=10;
 
 
 function setup()
@@ -29,10 +30,70 @@ for ( var i=0; i < cols; i++)
 {
 	for(var j=0; j < rows; j++)
 	{
-		grid[i][j] = new Cell(i*w ,j*w,w);
+		grid[i][j] = new Cell(i,j,w);
+	}
+
+}
+
+
+
+
+//pick total bombs
+
+var options=[];
+for ( var i=0; i < cols; i++)
+{
+	for(var j=0; j < rows; j++)
+	{
+		options.push([i,j]);
 	}
 }
+
+
+
+
+
+
+for ( var n =0;n<totalBees;n++)
+{
+	var index=floor(random(options.length));
+	var choice =  options[index];
+	var i= choice[0];
+	var j = choice[1]; 
+	options.splice(index,1);
+	grid[i][j].bee=true;
+
 }
+
+
+
+
+
+
+
+
+for (  i=0; i < cols; i++)
+{
+	for( j=0; j < rows; j++)
+	{
+		grid[i][j].countBombs();
+	}
+
+}
+	
+
+
+}
+
+
+
+
+
+
+
+
+
+
 
 function draw()
 {
@@ -58,7 +119,7 @@ for ( var i=0; i < cols; i++)
 	{
 		if ( grid[i][j].contains(mouseX , mouseY) )
 		{
-           grid[i][j].reveal();
+           grid[i][j].reveal ();
 		}
 	}
 }

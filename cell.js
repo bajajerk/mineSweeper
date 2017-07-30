@@ -1,20 +1,25 @@
 
-function Cell(x,y,w)
+function Cell(i,j,w)
 {
-	this.x=x;
-	this.y=y;
+	this.i= i;
+	this.j =j;
+	this.x=i*w;
+	this.y=j*w;
 	this.w=w;
-	this.revealed = false;
-	if (random(1) > 0.5)
-	{
-		this.bee = true;
-	}
-	else
-	{
-		this.bee = false ;
-	}
+	this.revealed = true;
+	this.neighbourCount;
+	// if (random(1) > 0.5)
+	// {
+	// 	this.bee = true;
+	// }
+	// else
+	// {
+	// 	this.bee = false ;
+	// }
 
+	this.bee=false;
 }
+
 
 Cell.prototype.show = function() {
 	stroke(0);
@@ -31,9 +36,14 @@ Cell.prototype.show = function() {
    	}
    	else
    	{
-   	fill(127);
-   	noStroke();
-   	rect(this.x , this.y , this.w , this.w );
+   
+       fill(200);
+      rect(this.x, this.y, this.w, this.w);
+      if (this.neighbourCount > 0) {
+        textAlign(CENTER);
+        fill(0);
+        text(this.neighbourCount, this.x + this.w * 0.5, this.y + this.w - 6);
+      }
 
    	}
    }
@@ -49,3 +59,47 @@ Cell.prototype.contains = function(x,y) {
 Cell.prototype.reveal = function() {
 this.revealed = true;
 }
+
+Cell.prototype.countBombs=function()
+{
+	var total=0;
+	if (this.bee)
+	{
+		this.neighbourCount=-1;
+		return;
+	}
+
+for (xOff=-1; xOff<=1 ; xOff++)
+{
+	for (yOff=-1; yOff<=1 ; yOff++)
+	{
+		var i = this.i+xOff;
+		var j = this.j+yOff;
+		if(i>-1 && i<cols && j>-1 && j<rows)
+		{
+            var neighbour = grid[i][j];
+            if (neighbour.bee)
+                 {
+      	             total++;
+                  }
+        }
+
+	}
+}
+console.log("check");
+this.neighbourCount = total;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
