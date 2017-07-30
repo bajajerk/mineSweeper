@@ -62,19 +62,16 @@ Cell.prototype.contains = function(x,y) {
 //var scoreObj= document.getElementById("score");
 Cell.prototype.reveal = function() {
 this.revealed = true;
-// var oldScore=($("#score").val());
-// console.log(oldScore);
-// var newScore  = oldScore+1;
-// console.log(newScore);
-// $("#score").text(newScore);
 
 
+if(!this.bee)
+{
 var computerScore = document.getElementById('score');
     var number = computerScore.innerHTML;
     number++;
     score.innerHTML = number;
-
-   // document.getElementById("score").innerHTML=parseFloat(scoreObj.innerHTML)+1;
+}
+   
 
 
 
