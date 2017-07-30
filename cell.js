@@ -124,7 +124,7 @@ for (xOff=-1; xOff<=1 ; xOff++)
 
 	}
 }
-console.log("check");
+// console.log("check");
 this.neighbourCount = total;
 }
 

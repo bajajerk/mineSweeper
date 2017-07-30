@@ -16,13 +16,17 @@ function make2DArray(cols,rows)
 var grid;
 var cols
 var rows
-var w = 20;
+var w = 40;
 var totalBees=10;
 
 
 function setup()
 {
-createCanvas(201,201);
+  var cnv = createCanvas(401, 401);
+  var x = windowWidth/3;
+  var y = windowHeight  / 5;
+  cnv.position(x, y);
+
 cols = floor(width / w);
 rows = floor(height / w);
 grid = make2DArray(cols,rows);
