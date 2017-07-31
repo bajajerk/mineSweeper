@@ -127,6 +127,7 @@ for ( var i=0; i < cols; i++)
            if(grid[i][j].bee)
            {
            	gameOver();
+
            }
 		}
 	}
@@ -143,8 +144,23 @@ function gameOver()
 	{
        grid[i][j].revealed=true;
    }
+
 }
+//alert("gameOver");
 }
 
+
+
+
+$("document").ready(function() {
+
+$("#newGame").click(function(){
+    setup();
+    var computerScore = document.getElementById('score');
+    
+   computerScore.innerHTML = 0;
+    })
+
+})
 
 

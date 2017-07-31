@@ -61,6 +61,10 @@ Cell.prototype.contains = function(x,y) {
 
 //var scoreObj= document.getElementById("score");
 Cell.prototype.reveal = function() {
+	if(this.revealed)
+	{
+		return;
+	}
 this.revealed = true;
 
 
