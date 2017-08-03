@@ -84,6 +84,19 @@ for (  i=0; i < cols; i++)
 	}
 
 }
+
+//random opening 
+i=1;
+while(i<=6)
+{
+	var k=floor(Math.random() * cols);
+	var l=floor(Math.random() * rows);
+	if(!grid[k][l].bee && !grid[k][l].revealed)
+	{
+		grid[k][l].revealed=true;
+		i=i+1;
+	}
+}
 	
 
 
